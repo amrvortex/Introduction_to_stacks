@@ -18,6 +18,11 @@ public class Stack implements IStack {
 	}
 	
 	@Override
+	/**
+	* Removes the element at the top of stack and returns that element.
+	*
+	* @return top of stack element, or through exception if empty
+	*/
 	public Object pop(){
 		if(isEmpty()){
 			throw new RuntimeException("The Stack is Empty");
@@ -30,6 +35,11 @@ public class Stack implements IStack {
 	}
 
 	@Override
+	/**
+	* Get the element at the top of stack without removing it from stack.
+	*
+	* @return top of stack element, or through exception if empty
+	*/
 	public Object peek() {
 		if(isEmpty()){
 			throw new RuntimeException("The Stack is Empty");
@@ -40,6 +50,12 @@ public class Stack implements IStack {
 	}
 
 	@Override
+	/**
+	* Pushes an item onto the top of this stack.
+	*
+	* @param object
+	* to insert
+	*/
 	public void push(Object element){
 		Node n = new Node(element);
 		n.next = top;
@@ -48,6 +64,11 @@ public class Stack implements IStack {
 	}
 
 	@Override
+	/**
+	* Tests if this stack is empty
+	*
+	* @return true if stack empty
+	*/
 	public boolean isEmpty() {
 		if(size == 0)
 			return true;
@@ -56,6 +77,12 @@ public class Stack implements IStack {
 	}
 
 	@Override
+	/**
+	* Returns the number of elements in the stack.
+	*
+	* @return number of elements in the stack
+	*/
+
 	public int size() {
 		return size;
 	}

@@ -3,6 +3,15 @@ package eg.edu.alexu.csd.datastructure.stack.cs52;
 public class ExpressionEvaluator implements IExpressionEvaluator{
 
 	@Override
+	/**
+	* Takes a symbolic/numeric infix expression as input and converts it to
+	* postfix notation. There is no assumption on spaces between terms or the
+	* length of the term (e.g., two digits symbolic or numeric term)
+	*
+	* @param expression
+	* infix expression
+	* @return postfix expression
+	*/
 	public String infixToPostfix(String expression){
 		//making a stringbuffer to be able to change it through the operations
 		StringBuffer str = new StringBuffer(expression);
@@ -67,6 +76,14 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 	}
 
 	@Override
+	/**
+	* Evaluate a postfix numeric expression, with a single space separator
+	*
+	* @param expression
+	* postfix expression
+	* @return the expression evaluated value
+	*/
+
 	public int evaluate(String expression){
 		float number;
 		Stack numbers = new Stack();
@@ -101,7 +118,16 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 			throw new RuntimeException("the postfix of the input is invalid");
 		return  (int)(float)numbers.pop();
 	}
-	
+	/**
+	 * Evaluate an operation between 2 float numbers
+	 * @param f1
+	 * the first float number
+	 * @param f2
+	 * the second float number
+	 * @param operator
+	 * the operator of the operation
+	 * @return the result of the operation between the 2 float numbers
+	 */
 	private float evaluateFloat(float f1 , float f2 , char operator){
 		switch (operator) {
 		case '+': return f1+f2;
@@ -115,18 +141,38 @@ public class ExpressionEvaluator implements IExpressionEvaluator{
 		       }
 		}
 	}
+	/**
+	 * check if the parameter was an operator or not 
+	 * @param c
+	 * the operator
+	 * @return a boolean expression
+	 */
 	private boolean checkOperator(char c){
 		if(c == '*'|| c == '+' || c == '-' || c == '/')
 			return true;
 		else
 			return false;
 	}
+	/**
+	 * check the precedence of the operators
+	 * @param c1
+	 * the first operator 
+	 * @param c2
+	 * the second operator
+	 * @return a boolean expression
+	 */
 	private boolean precedence(char c1, char c2){
 		if((c1 =='*'|| c1 == '/') && (c2 =='+' || c2 =='-'))
 			return true;
 		else
 			return false;
 	}
+	/**
+	 * check if the parameter was a character or not 
+	 * @param c
+	 * the character 
+	 * @return a boolean expression
+	 */
 	public boolean ifCharacter(char c){
 		if((c >='a' && c <='z') || (c >='A' && c <='Z'))
 			return true;
